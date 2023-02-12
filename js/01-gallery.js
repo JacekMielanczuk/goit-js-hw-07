@@ -23,3 +23,21 @@ function createItemsMarkup(image) {
     })
     .join("");
 }
+
+const clickContainer = (e) => {
+  e.preventDefault();
+
+  if (e.target.classList.contains("gallery")) return;
+  const source = e.target.dataset.source;
+
+  const instance = basicLightbox.create(`
+    <div class="modal">
+        <img src="${source}"width="800" height="600">
+        
+    </div>
+`);
+
+  instance.show();
+};
+
+galleryContainer.addEventListener("click", clickContainer);
